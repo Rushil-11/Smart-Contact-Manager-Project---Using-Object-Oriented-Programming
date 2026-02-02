@@ -68,8 +68,9 @@ int main() {
              break;}
         default : cout << "Enter a valid input!" << endl;
         }
-        cout << "Do you want to continue? (1 for Yes / 0 for No): ";
+        cout << "Do you want to continue? (Press --> 1 for Yes / 0 for No): ";
         cin >> option;
+
     }
     return 0;
 
