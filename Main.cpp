@@ -2,23 +2,25 @@
 #include "Task.cpp"
 using namespace std;
 int main() {
-    Task task; 
-    task.loadContact();  task.seeTask();
-     int t; cin >> t; 
-    switch(t){
-        case 1: {
-              int n;
-            cout << "Enter number of contacts to enter: " << endl; cin >> n; cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-            while(n>0){
-                string name; string num; string tag; string email; 
-                cout << "Name: "; getline(cin , name); 
-                cout << "Number: "; getline(cin , num);
-                 if(task.checkDuplicate(name, num)){continue;  }
-                cout << "Tag: "; getline(cin , tag);
-                cout << "Email: "; getline(cin , email); 
-                task.addContact(name, num, tag, email); n--; 
-            }
-            break; 
+    int option=1;
+    while(option==1){
+        Task task; 
+        task.loadContact();  task.seeTask();
+        int t; cin >> t; 
+        switch(t){
+            case 1: {
+                int n;
+                cout << "Enter number of contacts to enter: " << endl; cin >> n; cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                while(n>0){
+                    string name; string num; string tag; string email; 
+                    cout << "Name: "; getline(cin , name); 
+                    cout << "Number: "; getline(cin , num);
+                    if(task.checkDuplicate(name, num)){continue;  }
+                    cout << "Tag: "; getline(cin , tag);
+                    cout << "Email: "; getline(cin , email); 
+                    task.addContact(name, num, tag, email); n--; 
+                }
+                break; 
         }
         case 2: {int v; 
             cout << "Choose the Option to display: "<<endl;
@@ -35,7 +37,7 @@ int main() {
                      cin >> tg; cin.ignore(numeric_limits<streamsize>::max(), '\n');
                       task.viewfromTag(tg); break; }
                 default: cout << "Enter a valid number!" << endl;
-            }break; 
+            }break;
         }
         case 3: {int n; cout << "Enter number of contacts to be updated: " ; cin >> n; 
             string nname;  
@@ -66,6 +68,9 @@ int main() {
              break;}
         default : cout << "Enter a valid input!" << endl;
         }
+        cout << "Do you want to continue? (1 for Yes / 0 for No): ";
+        cin >> option;
+    }
     return 0;
 
 }
