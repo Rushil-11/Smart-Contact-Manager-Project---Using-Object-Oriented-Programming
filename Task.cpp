@@ -141,16 +141,16 @@ class Task{
     }
     bool checkDuplicate(string name, string num){ 
         vector<string>sname = sortName(); vector<string>snum = sortNum(); 
-        int i =0;
+        int i =0; bool f = false; 
         while(i<sname.size()){
-            if(sname[i] == name){cout << "There exists a contact with name : " << sname[i] << endl; return false; break; }
+            if(sname[i] == name){cout << "There exists a contact with name : " << sname[i] << endl;  break; }
             else{i++; }
         }i=0; 
         while(i<snum.size()){
-            if(snum[i] == num){cout << "There exists a contact with number: " << snum[i]<< endl; return true; break; }
+            if(snum[i] == num){cout << "There exists a contact with number: " << snum[i]<< endl; f = true; break; }
             else{i++; }
         }
-        return false; 
+        return f; 
 
     }
     void getContact(){

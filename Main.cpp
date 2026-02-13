@@ -2,8 +2,11 @@
 #include "Task.cpp"
 using namespace std;
 int main() {
-    Task task; 
-    task.loadContact();  task.seeTask();
+    Task task;
+    cout << "Enter 1 to continue, 0 to terminate: " ; 
+     int run; cin >> run; while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+     while(run != 0){
+        task.loadContact();  task.seeTask();
      int t; cin >> t; 
     switch(t){
         case 1: {
@@ -13,11 +16,14 @@ int main() {
                 string name; string num; string tag; string email; 
                 cout << "Name: "; getline(cin , name); 
                 cout << "Number: "; getline(cin , num);
-                 if(task.checkDuplicate(name, num)){continue;  }
+                if(task.checkDuplicate(name, num)){continue;  }
                 cout << "Tag: "; getline(cin , tag);
                 cout << "Email: "; getline(cin , email); 
                 task.addContact(name, num, tag, email); n--; 
             }
+            cout << "Contacts added successfully!" << endl;
+            cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+            while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
             break; 
         }
         case 2: {int v; 
@@ -35,7 +41,11 @@ int main() {
                      cin >> tg; cin.ignore(numeric_limits<streamsize>::max(), '\n');
                       task.viewfromTag(tg); break; }
                 default: cout << "Enter a valid number!" << endl;
-            }break; 
+            }
+            cout << "Task accomplished! " << endl;
+            cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+            while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+            break; 
         }
         case 3: {int n; cout << "Enter number of contacts to be updated: " ; cin >> n; 
             string nname;  
@@ -44,7 +54,11 @@ int main() {
             cout << "Enter the Contact Name to update: "; 
             getline(cin, nname); 
                 task.updateContact(nname);
-            } break;
+            } 
+            cout << "Contacts added successfully!" << endl;
+            cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+            while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+            break;
         }
         case 4 : {int n; cout << "Enter number of contacts to be deleted: "; cin >> n; cin.ignore(numeric_limits<streamsize>::max(), '\n');
             string dname; 
@@ -53,19 +67,32 @@ int main() {
                 cout << "Enter the Contact Name to delete: " << endl; 
             getline(cin , dname); 
             task.deleteContact(dname);
-        } break;
+        }
+        cout << "Contacts deleted successfully!" << endl;
+        cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+        while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+        break;
         }
         case 5 : {
             int n; cout << "Choose an option form below: " << endl;
             cout << "1 : Total contacts saved" << endl;
             cout << "2 : Contacts in a given tag" << endl; cin >> n; cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            task.ContactStats(n); break;
+            task.ContactStats(n);
+            cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+            while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+            break;
         }
-        case 6 : {cout << "Here you have the file: " << endl; task.getContact(); break;}
+        case 6 : {cout << "Here you have the file: " << endl; task.getContact();
+            cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+            while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+            break;}
         case 7 : {task.clearAll();cout << "Deleted all contacts successfully." << endl;
+            cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run;
+            while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
              break;}
-        default : cout << "Enter a valid input!" << endl;
-        }
+        default : cout << "Enter a valid input!" << endl; cout << "Enter 1 to continue, 0 to terminate: " ; cin >> run; while((run != 0) && (run != 1)){cout << "Enter valid input: "; cin >> run;  }
+        }}
+    
     return 0;
 
 }
